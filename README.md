@@ -65,7 +65,7 @@ ipatool.exe download -b com.example.app --external-version-id <ID>
 ```
 
 ### 6. Install to Connected Device
-Deploy the downloaded `.ipa` package using `AppManager` or Apple mobile device utilities to your paired iOS device.
+Deploy the downloaded `.ipa` package using [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager) (Windows GUI) or `ideviceinstaller` to your paired iOS device. See [Installing Downloaded IPAs](guides/installing-downloaded-ipas.md) for full instructions.
 
 ---
 
@@ -74,7 +74,9 @@ Deploy the downloaded `.ipa` package using `AppManager` or Apple mobile device u
 - [Guides](guides/)
   - [Getting Started](guides/getting-started.md)
   - [Windows Setup](guides/windows-setup.md)
-  - [Device Installation](guides/installing-downloaded-ipas.md)
+  - [Device Installation via AppManager & CLI](guides/installing-downloaded-ipas.md)
+- [Tools & Ecosystem](tools/)
+  - [Recommended Tools](tools/useful-tools.md)
 - [Research Notes](research/)
   - [Version Identifiers](research/external-identifiers.md)
 

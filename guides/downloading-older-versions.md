@@ -96,8 +96,8 @@ Apple does not track releases by their semantic string (`13.90.0`), but by an in
 1. Open your web browser and go to the homepage: **[IPA File Zone](https://ipafilezone.st/)**.
 2. Use the search bar on the website to search for the app manually by name (e.g., `Snapchat`) or paste the numeric App ID (`447188370`).
 3. Open the app from the search results and scroll down to the **Version History** section.
-4. Manually locate the row for your target version (such as `13.90.0`).
-5. Copy the corresponding **External Version ID** (for example, `885041606`).
+4. Manually locate the row for your target version (such as `v13.90.0`).
+5. In the **Version / IDs** column, look for the line labeled **"App Store ID:"** (for example: `App Store ID: 885041606`). This number is the `externalVersionIdentifier` needed for `ipatool`. Copy this numeric ID.
 
 ### Alternative: Native CLI Manual Discovery
 If the web database is unreachable, you can find the ID manually using `ipatool`:

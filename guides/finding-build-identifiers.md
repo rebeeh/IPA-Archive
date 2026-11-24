@@ -44,16 +44,21 @@ Querying every single integer using `ipatool get-version-metadata` takes hundred
 3. Click on the application from the search results to open its catalog page.
 
 ### 2. Inspect the Version History Table
-Scroll down to the **Version History** section:
+Scroll down to the **Version History** section. The table displays entries structured as follows:
 
-| Marketing Version | Release Date | External Version ID | Status |
+![IPA File Zone Version Table](../docs/images/ipafilezone-table.png)
+
+| Details | Version / IDs | Version Date | Action |
 | :--- | :--- | :--- | :--- |
-| **13.90.0** | April 28, 2026 | `885041606` | Verified |
-| **13.88.0** | April 14, 2026 | `884513024` | Verified |
-| **1.0** | July 07, 2011 | `3880712` | Archival |
+| 🟡 **Icon**<br/>346.71 MB | **v14.33.0**<br/>**App Store ID**: `895519329`<br/>Build: 14.33.0.57 | 2026-11-21 00:58:08 | `Get Version` |
+| 🟡 **Icon**<br/>312.45 MB | **v13.90.0**<br/>**App Store ID**: `885041606`<br/>Build: 13.90.0.42 | 2026-04-28 19:28:24 | `Get Version` |
+
+> [!IMPORTANT]
+> **Understanding the "App Store ID" Label**:  
+> In the IPA File Zone interface under the **"Version / IDs"** column, the number labeled **"App Store ID:"** (e.g., `895519329` or `885041606`) is the exact **`externalVersionIdentifier`** needed for `ipatool`. Do not confuse this with the main application item ID (`447188370`).
 
 ### 3. Copy the Identifier
-Manually copy the target numeric ID from the **External Version ID** column (e.g., `885041606`).
+Manually copy the numeric value listed under **App Store ID:** (e.g., `885041606`) to use with `ipatool`.
 
 ---
 

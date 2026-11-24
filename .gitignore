@@ -1,0 +1,20 @@
+# Temporary local files and test data
+temp/
+*.ipa
+*.zip
+*.tar.gz
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Authentication and keychains
+.ipatool/
+*.keychain
+*.p12
+*.pem
+credentials.json
+
+# Python cache
+__pycache__/
+*.pyc

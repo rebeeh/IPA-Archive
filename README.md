@@ -73,10 +73,13 @@ Deploy the downloaded `.ipa` package using [AppManager](https://git.kawaiizenbo.
 
 - [Guides](guides/)
   - [Getting Started](guides/getting-started.md)
+  - [Finding Build Identifiers (IPA File Zone)](guides/finding-build-identifiers.md)
   - [Windows Setup](guides/windows-setup.md)
   - [Device Installation via AppManager & CLI](guides/installing-downloaded-ipas.md)
 - [Tools & Ecosystem](tools/)
   - [Recommended Tools](tools/useful-tools.md)
+- [Automation & Scripts](scripts/)
+  - [Version Metadata Verification Script](scripts/find_version_id.py)
 - [Research Notes](research/)
   - [Version Identifiers](research/external-identifiers.md)
 

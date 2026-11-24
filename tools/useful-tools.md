@@ -1,45 +1,50 @@
-# Recommended Tools & Utilities
+# Recommended Tools & Utilities Matrix
 
-A curated matrix of open-source tools and utilities for iOS application package retrieval, metadata research, and device deployment.
-
----
-
-## 1. Package Retrieval & Metadata Tools
-
-### [ipatool](https://github.com/majd/ipatool)
-- **Author**: Majd Alfhaily
-- **Platforms**: Windows, macOS, Linux
-- **License**: MIT
-- **Purpose**: Authenticates directly with Apple's App Store APIs to search apps, query licensing, enumerate historical version identifiers, and retrieve `.ipa` packages.
-
-### [mitmproxy](https://mitmproxy.org/) / Charles Proxy
-- **Platforms**: Windows, macOS, Linux
-- **Purpose**: HTTP/HTTPS traffic inspection for observing and debugging Storefront requests and responses.
+[🏠 Home](../README.md) • [📚 Guides Index](../README.md#-documentation-index) • [📥 Download Older Versions](../guides/downloading-older-versions.md) • [📲 Installation Guide](../guides/installing-downloaded-ipas.md)
 
 ---
 
-## 2. Device Deployment Tools
+## Overview
 
-### [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager)
-- **Author**: KawaiiZenbo
-- **Platform**: Windows (GUI)
-- **Source**: [https://git.kawaiizenbo.me/kawaiizenbo/AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager)
-- **Releases**: [Download Latest Release](https://git.kawaiizenbo.me/kawaiizenbo/AppManager/releases)
-- **Purpose**: A native Windows GUI wrapper around `ideviceinstaller` that allows one-click installation and removal of `.ipa` packages onto connected iOS devices over USB. Ideal for deploying IPAs retrieved with `ipatool` onto stock or jailbroken devices.
-
-### [libimobiledevice / ideviceinstaller](https://libimobiledevice.org/)
-- **Platforms**: Linux, macOS, Windows
-- **Purpose**: The foundational open-source protocol library for communicating with iOS devices natively without Apple proprietary libraries.
-
-### [Apple Configurator](https://apps.apple.com/us/app/apple-configurator/id1037126344)
-- **Author**: Apple Inc.
-- **Platform**: macOS
-- **Purpose**: Official utility for managing and deploying enterprise profiles and `.ipa` packages over USB.
+A curated matrix of active open-source tools, repositories, and databases for iOS package research, version querying, and physical device deployment.
 
 ---
 
-## 3. Version Archive & Identifier References
+## 1. CLI Retrieval & Analysis Tools
 
-- **ipatool CLI**: Native command `ipatool list-versions -b <bundleID>` and `ipatool get-version-metadata`.
-- **armconverter.com**: Historical iOS app version database.
-- **ipafilezone.st**: Community index for historical external version IDs.
+| Tool | Developer | Platform | Purpose | Links |
+| :--- | :--- | :--- | :--- | :--- |
+| **`ipatool`** | [Majd Alfhaily](https://github.com/majd) | Windows, macOS, Linux | Primary CLI for querying App Store APIs, licensing, listing version IDs, and downloading IPAs. | [GitHub](https://github.com/majd/ipatool) • [Releases](https://github.com/majd/ipatool/releases) |
+| **`ipatool-rs`** | [Kosthi](https://github.com/Kosthi) | Cross-platform | High-performance Rust reimplementation of ipatool. | [GitHub](https://github.com/Kosthi/ipatool-rs) |
+| **`mitmproxy`** | Mitmproxy Team | Windows, macOS, Linux | Interactive HTTPS proxy for intercepting and inspecting Apple Storefront requests. | [Website](https://mitmproxy.org/) |
+
+---
+
+## 2. Device Deployment & Management
+
+| Tool | Developer | Platform | Purpose | Links |
+| :--- | :--- | :--- | :--- | :--- |
+| **`AppManager`** | [kawaiizenbo](https://git.kawaiizenbo.me/kawaiizenbo) | Windows (GUI) | Clean native GUI wrapper for `ideviceinstaller` to install, view, and manage IPAs over USB. | [Forgejo Repo](https://git.kawaiizenbo.me/kawaiizenbo/AppManager) • [Releases](https://git.kawaiizenbo.me/kawaiizenbo/AppManager/releases) |
+| **`libimobiledevice`** | libimobiledevice Team | Windows, macOS, Linux | Foundation library and CLI tools (`ideviceinstaller`, `idevice_id`) for communicating with iOS devices over USB. | [Website](https://libimobiledevice.org/) • [GitHub](https://github.com/libimobiledevice) |
+| **`Apple Configurator`** | Apple Inc. | macOS | Official Apple tool for managing and sideloading configuration profiles and IPAs on iOS hardware. | [Mac App Store](https://apps.apple.com/us/app/apple-configurator/id1037126344) |
+
+---
+
+## 3. Alternative Graphical Frontends
+
+| Tool | Developer | Platform | Purpose | Links |
+| :--- | :--- | :--- | :--- | :--- |
+| **`ipatool-gui`** | Mehmet Akif Şimşek | Windows, macOS | Graphical desktop user interface for interacting with `ipatool`. | [GitHub](https://github.com/mehmetakifsimsek/ipatool-gui) |
+| **`pyIPATool-WebUI`** | [jschmudd14](https://github.com/jschmudd14) | Web Browser | Web UI interface built around ipatool with enhanced support for tvOS downloads. | [GitHub](https://github.com/jschmudd14/pyIPATool-WebUI) |
+
+---
+
+## 4. Version Databases & Community References
+
+- [**IPA File Zone**](https://ipafilezone.st/): Catalog of App Store releases, release dates, and `externalVersionIdentifier` mappings.
+- [**armconverter.com**](https://armconverter.com/decryptedappstore): Searchable index of decrypted binaries, bundle IDs, and architecture info.
+- [**qnblackcat's Gist**](https://gist.github.com/qnblackcat/4f7b77f685ccda2ff4ef916a27d66107): The original community discussion thread for older version downloads.
+
+---
+
+[⬅️ Troubleshooting](../troubleshooting/ipatool-errors.md) • [External Version Research ➡️](../research/external-identifiers.md)

@@ -1,6 +1,24 @@
-# ipatool Common Errors & Troubleshooting Guide
+# ipatool Common Errors & Troubleshooting Reference
 
-This guide documents the most common errors encountered by users when using `ipatool`, compiled from real-world community issues, bug reports, and discussion threads.
+[🏠 Home](../README.md) • [📚 Guides Index](../README.md#-documentation-index) • [📥 Download Older Versions](../guides/downloading-older-versions.md) • [📲 Installation Guide](../guides/installing-downloaded-ipas.md)
+
+---
+
+## Overview
+
+This document provides solutions for the most frequent issues, error strings, and confusing behaviors encountered when using [`ipatool`](https://github.com/majd/ipatool), compiled from real-world community feedback on [qnblackcat's Gist](https://gist.github.com/qnblackcat/4f7b77f685ccda2ff4ef916a27d66107) and active GitHub issues.
+
+---
+
+## Table of Contents
+
+1. [Windows Keystore Passphrase Confusion](#1-windows-keystore-passphrase-confusion)
+2. ["license is required" Error](#2-license-is-required-error)
+3. [Typographic / Unicode Dash Parsing Error](#3-typographic--unicode-dash-parsing-error)
+4. [Email Address Format Confusion](#4-email-address-format-confusion)
+5. [App Installs via USB but Closes Immediately on Launch](#5-app-installs-via-usb-but-closes-immediately-on-launch)
+6. ["failed to write file: unexpected EOF" / Corrupted Downloads](#6-failed-to-write-file-unexpected-eof--corrupted-downloads)
+7. [tvOS & watchOS Apps Downloading](#7-tvos--watchos-apps-downloading)
 
 ---
 
@@ -11,13 +29,17 @@ This guide documents the most common errors encountered by users when using `ipa
 enter passphrase to unlock "C:\Users\<user>\.ipatool" (this is separate from your Apple ID password):
 ```
 
-### Explanation & Solution
-- **What it is**: `ipatool` on Windows creates an encrypted local database under `C:\Users\<user>\.ipatool` to store authentication tokens.
-- **Why people get stuck**: Many users confuse this with their Apple ID password or Windows login password.
-- **Solution**:
-  - The first time you run `auth login`, `ipatool` prompts you to define a new passphrase to protect this directory. Whatever you typed then is the passphrase you must enter on future commands.
-  - If you forgot this local passphrase, simply delete the folder `C:\Users\<your-username>\.ipatool` and log in again with `ipatool auth login`.
-  - For automated scripts, you can supply `--keychain-passphrase "<passphrase>"` to bypass interactive prompts.
+### Cause
+On Windows, `ipatool` initializes an encrypted local storage directory at `C:\Users\<user>\.ipatool` using a master passphrase to secure your authentication tokens on disk.
+
+### Solution
+- **First-time prompt**: Enter any secure password you want. You must enter this same passphrase on subsequent `ipatool` commands.
+- **Forgot passphrase?**: Reset the keystore by deleting the directory:
+  ```powershell
+  Remove-Item -Recurse -Force "$env:USERPROFILE\.ipatool"
+  ```
+  Then re-run `ipatool auth login` to define a new passphrase.
+- **Automated bypass**: In scripts, pass the `--keychain-passphrase "<passphrase>"` flag to prevent interactive stops.
 
 ---
 
@@ -28,19 +50,21 @@ enter passphrase to unlock "C:\Users\<user>\.ipatool" (this is separate from you
 ERR error="license is required" success=false
 ```
 
-### Explanation & Solution
-- **What it is**: Apple will not allow an Apple ID to query versions or download an application unless that account holds an active "purchase" record for the app.
-- **Solution for Free Apps**:
-  Run the `purchase` command before querying or downloading:
+### Cause
+Apple's Storefront enforces account ownership. If your Apple account has never downloaded ("purchased") the application in the past, the Storefront refuses requests to enumerate version IDs or download binaries.
+
+### Solution
+- **For Free Apps ($0.00)**:  
+  Acquire the license record on your account using the `purchase` command:
   ```powershell
   ipatool purchase -b com.example.app
   ```
-  Alternatively, you can add `--purchase` to the download command:
+  Or append `--purchase` directly to your download command:
   ```powershell
   ipatool download -b com.example.app --external-version-id <ID> --purchase
   ```
-- **Solution for Paid Apps**:
-  `ipatool purchase` cannot buy paid apps. You must purchase the app legitimately in the App Store on an iOS device first using the same Apple ID. Once purchased, `ipatool` will be authorized to download any historical build.
+- **For Paid Apps**:  
+  `ipatool purchase` **cannot** purchase paid apps. You must purchase the app legitimately in the App Store on an iOS device first using the same Apple ID. Once owned, `ipatool` can download any previous build.
 
 ---
 
@@ -51,42 +75,47 @@ ERR error="license is required" success=false
 ERR error="unknown shorthand flag: 'â' in -—email" success=false
 ```
 
-### Explanation & Solution
-- **What it is**: Copying commands from blog posts, rich-text markdown, or certain mobile browsers often converts double hyphens (`--`) into an em-dash (`—`) or en-dash (`–`).
-- **Solution**: Always ensure flags start with two standard ASCII minus characters (`--`):
-  ```powershell
-  # Correct:
-  ipatool auth login --email user@example.com
+### Cause
+Copying commands from formatted web pages, rich text, or blog posts often converts double hyphens (`--`) into Unicode em-dashes (`—`) or en-dashes (`–`), which corrupts CLI flag parsing.
 
-  # Incorrect (broken unicode em-dash):
-  ipatool auth login —email user@example.com
-  ```
+### Solution
+Always ensure flag arguments start with two standard ASCII minus characters (`--`):
+```powershell
+# ✅ Correct:
+ipatool auth login --email user@example.com
+
+# ❌ Incorrect (em-dash):
+ipatool auth login —email user@example.com
+```
 
 ---
 
-## 4. Email Format Confusion (`@icloud.com` vs Others)
+## 4. Email Address Format Confusion
 
-### Explanation & Solution
-- Many guides illustrate logins using `user@icloud.com`.
-- **Reality**: You can use **any email address** associated with your Apple ID (e.g., `@gmail.com`, `@yahoo.com`, or custom domains). You do not need to register a separate iCloud address.
+### Issue
+Many community guides write `--email yourAppleID@icloud.com`, leading users to believe an `@icloud.com` account is mandatory.
+
+### Solution
+You can use **any email address** registered as your Apple ID (e.g., `@gmail.com`, `@outlook.com`, `@yahoo.com`, or custom domains). There is no requirement to have an `@icloud.com` email.
 
 ---
 
 ## 5. App Installs via USB but Closes Immediately on Launch
 
 ### The Symptom
-App installs successfully (e.g. via AppManager or ideviceinstaller), but upon tapping the app icon on iOS, it immediately flashes and quits or prompts for credentials.
+The `.ipa` package installs successfully (e.g., [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager) logs `Process ended with code 0 (Success)`), but tapping the app icon on the iPhone screen causes it to instantly flash and close or prompt for credentials.
 
-### Explanation & Solution
-- **What it is**: Apple FairPlay DRM enforcement. The downloaded binary is encrypted with keys tied directly to the Apple ID that downloaded it.
-- **Solution**:
-  - Open **Settings > App Store** (or your primary Apple ID settings) on the iOS device.
-  - Sign in with the exact same Apple ID used during `ipatool auth login`.
-  - Once signed in, iOS validates the receipt stored inside the `.ipa` package (`SC_Info`), and the app will open without issue.
+### Cause
+**Apple FairPlay DRM Account Mismatch.** Packages downloaded from the App Store contain signed receipts matching the Apple ID used during `ipatool auth login`.
+
+### Solution
+1. Open **Settings > App Store** (or your primary iCloud account settings) on the target iOS device.
+2. Sign into the **same Apple ID** used with `ipatool`.
+3. Launch the app again. The system validates the receipt in `SC_Info` and launches the application without terminating.
 
 ---
 
-## 6. "failed to write file: unexpected EOF" or "failed to open zip reader"
+## 6. "failed to write file: unexpected EOF" / Corrupted Downloads
 
 ### The Symptom
 ```text
@@ -94,25 +123,33 @@ ERR error="failed to download file: failed to write file: unexpected EOF" succes
 ERR error="failed to open zip reader" success=false
 ```
 
-### Explanation & Solution
-- **What it is**: Incomplete or corrupted download stream from Apple's CDN.
-- **Common Causes**:
-  1. **Low Disk Space**: The partition running `ipatool` does not have enough free space to buffer the package.
-  2. **Network Interruption**: The connection timed out or dropped midway through the download.
-  3. **Folder Permissions**: Running in a protected system directory without write permissions.
-- **Solution**:
-  - Run `ipatool` from a dedicated user directory (e.g., `C:\Tools\` or `~/Downloads/`).
-  - Verify network stability and ensure sufficient disk space.
-  - Re-run the download command to fetch a clean package.
+### Cause
+The download stream from Apple's Akamai CDN was interrupted or truncated before completion.
+
+### Solution
+1. **Check Disk Space**: Ensure the partition where `ipatool` is writing has at least double the size of the target IPA in free space.
+2. **Permissions**: Do not run `ipatool` in protected system folders like `C:\Windows\System32`. Use `C:\Tools\` or `Downloads\`.
+3. **Network Stability**: If on an unstable connection or VPN, reconnect and re-issue the command.
 
 ---
 
 ## 7. tvOS & watchOS Apps Downloading
 
-### Explanation & Solution
-- By default, standard `ipatool` targets iOS binaries.
-- To download watchOS, tvOS, or visionOS packages, ensure you are running `ipatool` v2.8.0 or newer, which includes platform flags:
+### Question
+*Can I download older versions of Apple TV (tvOS) or Apple Watch (watchOS) apps?*
+
+### Solution
+Yes. Modern versions of `ipatool` (v2.8+) support tvOS and watchOS packages:
+- Check if the app supports tvOS/watchOS:
+  ```powershell
+  ipatool search "App Name"
+  ```
+  Look for `"platforms": ["iphone", "ipad", "appletvos", "watchos"]` in the output.
+- Pass the external version ID as usual:
   ```powershell
   ipatool download -b com.example.tvapp --external-version-id <ID>
   ```
-- If an app is a universal purchase containing Apple TV builds, you can verify supported platforms using `ipatool search <AppName>` (look for the `"platforms"` array in the output).
+
+---
+
+[⬅️ Installing Downloaded IPAs](../guides/installing-downloaded-ipas.md) • [Tools Matrix ➡️](../tools/useful-tools.md)

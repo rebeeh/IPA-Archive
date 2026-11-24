@@ -12,6 +12,9 @@ This guide provides a comprehensive, beginner-friendly walkthrough on how to dis
 
 > [!NOTE]
 > This guide updates and expands upon classic community methods (such as [qnblackcat's Gist](https://gist.github.com/qnblackcat/4f7b77f685ccda2ff4ef916a27d66107)) by incorporating direct command-line metadata queries and modern deployment via [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager).
+> 
+> **Need help setting up your OS first?**  
+> See the dedicated guides: [🪟 Windows Setup](windows-setup.md) • [🍎 macOS Setup](macos-setup.md) • [🐧 Linux Setup](linux-setup.md)
 
 ---
 

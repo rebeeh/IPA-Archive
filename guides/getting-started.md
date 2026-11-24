@@ -49,6 +49,7 @@ sequenceDiagram
 
 ## Next Steps
 
+- Set up your operating system environment: [🪟 Windows](windows-setup.md) • [🍎 macOS](macos-setup.md) • [🐧 Linux](linux-setup.md).
 - Proceed to the flagship guide: [**Downloading Older Versions of iOS Apps Using ipatool**](downloading-older-versions.md).
 - Learn how to look up version IDs quickly on [**IPA File Zone**](finding-build-identifiers.md).
 - Learn how to install retrieved packages via [**AppManager**](installing-downloaded-ipas.md).

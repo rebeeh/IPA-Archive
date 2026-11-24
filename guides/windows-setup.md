@@ -1,67 +1,73 @@
-# Windows Environment & Setup Guide
+# Windows Setup Guide
 
-[🏠 Home](../README.md) • [📚 Guides Index](../README.md#-documentation-index) • [📥 Download Older Versions](downloading-older-versions.md)
+[🏠 Home](../README.md) • [📚 Guides Index](../README.md#-documentation-index) • [🍎 macOS Setup](macos-setup.md) • [🐧 Linux Setup](linux-setup.md) • [📥 Download Older Versions](downloading-older-versions.md)
 
 ---
 
 ## Overview
 
-This guide explains how to properly configure your Windows 10 or 11 system for running [`ipatool`](https://github.com/majd/ipatool) and deploying iOS applications via [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager).
+A clean, step-by-step setup guide for running [`ipatool`](https://github.com/majd/ipatool) and deploying iOS applications via [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager) on Windows 10 and Windows 11.
 
 ---
 
-## Prerequisites
+## Step 1: Install Apple Mobile Device Drivers
 
-1. **Windows PowerShell 5.1 or PowerShell 7+**:
-   - Preinstalled on Windows 10/11. (PowerShell 7 can be installed via `winget install Microsoft.PowerShell`).
-2. **Apple Mobile Device Support**:
-   - Required for USB communication with your iOS hardware.
-   - Installed automatically when installing [iTunes from Apple](https://www.apple.com/itunes/) or the modern [Apple Devices app](https://apps.microsoft.com/detail/9np83lwlpz9k) from the Microsoft Store.
+To allow Windows and AppManager to communicate with your iPhone or iPad over USB, you need Apple's USB drivers:
+
+- **Option A (Recommended)**: Install the official **[Apple Devices app](https://apps.microsoft.com/detail/9np83lwlpz9k)** directly from the Microsoft Store.
+- **Option B**: Download and install standard **[iTunes for Windows](https://www.apple.com/itunes/)**.
 
 ---
 
-## 1. Setting Up ipatool
+## Step 2: Download ipatool for Windows
 
-1. Download the latest `ipatool-windows-amd64.zip` from the [official releases page](https://github.com/majd/ipatool/releases).
-2. Extract the archive into an easily accessible directory, such as `C:\Tools\ipatool\`.
-3. (Optional) Add `C:\Tools\ipatool` to your Windows System `PATH` so `ipatool` can be invoked from any prompt:
+1. Download the latest `ipatool-windows-amd64.zip` from the [official releases](https://github.com/majd/ipatool/releases).
+2. Extract the archive into a simple folder, such as `C:\Tools\ipatool\`.
+3. Open **Windows PowerShell** or Command Prompt and test the binary:
    ```powershell
-   [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Tools\ipatool", "User")
+   cd C:\Tools\ipatool
+   .\ipatool.exe --version
    ```
 
+> [!TIP]
+> **Optional: Add to PATH**:  
+> To run `ipatool` from any folder without typing `cd C:\Tools\ipatool`, run this in PowerShell once:
+> ```powershell
+> [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Tools\ipatool", "User")
+> ```
+
 ---
 
-## 2. Managing the Windows Keystore Passphrase
+## Step 3: Understanding the Keystore Passphrase
 
-On Windows, `ipatool` stores session tokens inside `C:\Users\<YourUsername>\.ipatool`.
+The first time you log in with `ipatool.exe auth login`, you will see:
+
+```text
+enter passphrase to unlock "C:\Users\<user>\.ipatool" (this is separate from your Apple ID password):
+```
 
 > [!NOTE]
-> The first time you execute `ipatool auth login`, it will ask:
-> ```text
-> enter passphrase to unlock "C:\Users\<user>\.ipatool" (this is separate from your Apple ID password):
-> ```
-> This is a **local master password** to encrypt cached credentials on your PC. Choose a passphrase and keep note of it.
-
-If you ever forget this passphrase:
-```powershell
-Remove-Item -Recurse -Force "$env:USERPROFILE\.ipatool"
-```
-Then log in again with `ipatool auth login`.
+> This is simply a **local master password** to encrypt saved credentials on your computer. It is not your Apple ID password or Windows account password. Type any simple passphrase you can remember.
+> 
+> If you ever forget it, simply delete the folder `C:\Users\<YourUsername>\.ipatool` and log in again.
 
 ---
 
-## 3. Verifying Driver Connectivity
+## Step 4: Download AppManager for One-Click USB Installation
 
-To test whether your PC can communicate with your iOS device over USB before launching AppManager:
+To install your retrieved `.ipa` packages to your iPhone with a single click:
 
-1. Connect your device via USB and unlock the screen.
-2. Tap **Trust This Computer**.
-3. Check services:
-   ```powershell
-   Get-Service -Name "*Apple Mobile Device*"
-   ```
-   Ensure the service status is **Running**.
+1. Download **`AppManager v1.1 Setup.exe`** from [AppManager Releases](https://git.kawaiizenbo.me/kawaiizenbo/AppManager/releases).
+2. Run the installer and launch **AppManager**.
+3. Plug in your iPhone via USB, tap **Trust This Computer**, and you are ready to deploy packages!
 
 ---
 
-[⬅️ Home](../README.md) • [Download Older Versions ➡️](downloading-older-versions.md)
+## Next Steps
+
+- Proceed to the main guide: [**Downloading Older Versions of iOS Apps Using ipatool**](downloading-older-versions.md).
+- Follow the detailed device installation walkthrough: [**Installing Downloaded IPAs**](installing-downloaded-ipas.md).
+
+---
+
+[⬅️ Home](../README.md) • [macOS Setup ➡️](macos-setup.md)

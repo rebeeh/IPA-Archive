@@ -12,6 +12,8 @@
 
 [📖 Quick Start](#-quick-reference) • [📥 Download Older Versions](guides/downloading-older-versions.md) • [📲 Device Installation](guides/installing-downloaded-ipas.md) • [🛠️ Useful Tools](tools/useful-tools.md) • [🚨 Troubleshooting](troubleshooting/ipatool-errors.md)
 
+[🪟 Windows Setup](guides/windows-setup.md) • [🍎 macOS Setup](guides/macos-setup.md) • [🐧 Linux Setup](guides/linux-setup.md)
+
 ---
 
 </div>
@@ -78,8 +80,11 @@ ipatool.exe download -b com.toyopagroup.picaboo --external-version-id 885041606
   *How to find exact `externalVersionIdentifier` values on [IPA File Zone](https://ipafilezone.st/) without brute forcing.*
 * [**Installing Downloaded IPAs via AppManager & CLI**](guides/installing-downloaded-ipas.md)  
   *Deploying packages to iOS devices with [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager), Apple Configurator, or `ideviceinstaller`.*
-* [**Windows Setup & Environment Configuration**](guides/windows-setup.md)  
-  *Configuring PowerShell 5.1/7, managing DPAPI keystores, and installing Apple USB drivers.*
+
+### 💻 Platform Setup Guides
+* [**🪟 Windows Setup Guide**](guides/windows-setup.md) — *PowerShell 5.1/7, Apple USB drivers, and AppManager setup.*
+* [**🍎 macOS Setup Guide**](guides/macos-setup.md) — *Homebrew installation, native Keychain integration, and Apple Configurator.*
+* [**🐧 Linux Setup Guide**](guides/linux-setup.md) — *Precompiled binaries, `usbmuxd`, and `libimobiledevice` driver configuration.*
 
 ### 🚨 Troubleshooting & Community Issues
 * [**ipatool Common Errors & Solutions**](troubleshooting/ipatool-errors.md)  

@@ -30,19 +30,18 @@ Querying every single integer using `ipatool get-version-metadata` takes hundred
 
 ---
 
-## Method 1: Look up on IPA File Zone (Recommended)
+## Method 1: Manual Lookup on IPA File Zone (Recommended)
 
 [**IPA File Zone**](https://ipafilezone.st/) is a community-driven web catalog indexing App Store releases and mapping them directly to Apple's external version IDs.
 
-### 1. Construct the App URL
-Navigate directly using the app's developer name, application slug, and numeric App Store ID:
+> [!TIP]
+> **Why Manual Search is Best**:  
+> Deep-linking directly to app pages or using automated HTTP scrapers often returns fetch or timeout errors due to Cloudflare anti-bot verification and dynamic session parameters. It is strongly recommended to navigate to the site manually in a standard browser.
 
-```text
-https://ipafilezone.st/app/<developer-slug>/<app-slug>/<app-store-id>
-```
-
-**Real-world Example (Snapchat)**:
-> [https://ipafilezone.st/app/snap-inc/snapchat/447188370](https://ipafilezone.st/app/snap-inc/snapchat/447188370?r=a115c2b4ba09b5189403b600)
+### 1. Manual Search Workflow
+1. In your browser, open the homepage: **[https://ipafilezone.st/](https://ipafilezone.st/)**.
+2. In the site's search bar, enter the app name (e.g. `Snapchat`) or its numeric App Store ID (`447188370`).
+3. Click on the application from the search results to open its catalog page.
 
 ### 2. Inspect the Version History Table
 Scroll down to the **Version History** section:
@@ -53,8 +52,8 @@ Scroll down to the **Version History** section:
 | **13.88.0** | April 14, 2026 | `884513024` | Verified |
 | **1.0** | July 07, 2011 | `3880712` | Archival |
 
-### 3. Copy the ID
-Copy the exact numeric string from the **External Version ID** column (e.g., `885041606`).
+### 3. Copy the Identifier
+Manually copy the target numeric ID from the **External Version ID** column (e.g., `885041606`).
 
 ---
 

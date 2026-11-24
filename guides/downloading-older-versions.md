@@ -87,14 +87,30 @@ If you haven't previously installed or "purchased" this app with this Apple ID, 
 
 Apple does not track releases by their semantic string (`13.90.0`), but by an internal 64-bit number called the `externalVersionIdentifier` (e.g., `885041606`).
 
-Instead of guessing from hundreds of raw numbers returned by `ipatool list-versions`, look up the app directly on [IPA File Zone](https://ipafilezone.st/):
+### Manual Web Lookup (Recommended)
 
-1. Visit: `https://ipafilezone.st/app/<developer>/<app-name>/<app-id>`  
-   *(Example: [Snapchat on IPA File Zone](https://ipafilezone.st/app/snap-inc/snapchat/447188370?r=a115c2b4ba09b5189403b600))*
-2. Scroll to the **Version History** table.
-3. Find your desired version (e.g. `13.90.0`) and copy its **External Version ID** (`885041606`).
+> [!TIP]
+> **Manual Search Recommended**:  
+> Avoid relying on direct links or automated scrapers to app pages, as they frequently fail or return fetch errors due to bot protection and session tokens. Instead, search manually in your browser:
 
-*(For an in-depth breakdown of version discovery techniques, read [Finding Build Identifiers](finding-build-identifiers.md).)*
+1. Open your web browser and go to the homepage: **[IPA File Zone](https://ipafilezone.st/)**.
+2. Use the search bar on the website to search for the app manually by name (e.g., `Snapchat`) or paste the numeric App ID (`447188370`).
+3. Open the app from the search results and scroll down to the **Version History** section.
+4. Manually locate the row for your target version (such as `13.90.0`).
+5. Copy the corresponding **External Version ID** (for example, `885041606`).
+
+### Alternative: Native CLI Manual Discovery
+If the web database is unreachable, you can find the ID manually using `ipatool`:
+1. List all historical version IDs:
+   ```powershell
+   .\ipatool.exe list-versions -b com.toyopagroup.picaboo --format json
+   ```
+2. Check candidate IDs towards the end of the array (newer releases have higher numbers) using:
+   ```powershell
+   .\ipatool.exe get-version-metadata -b com.toyopagroup.picaboo --external-version-id <candidate-id> --format json
+   ```
+
+*(For a deeper comparison of manual discovery techniques, read [Finding Build Identifiers](finding-build-identifiers.md).)*
 
 ---
 

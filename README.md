@@ -71,32 +71,24 @@ ipatool.exe download -b com.toyopagroup.picaboo --external-version-id 885041606
 
 ## 📚 Documentation Index
 
-### 🚀 Core Guides
+### 🚀 Core Walkthroughs
 * [**Downloading Older Versions of iOS Apps Using ipatool**](guides/downloading-older-versions.md)  
-  *The flagship step-by-step guide explaining authentication, version lookup, downloading, and verification.*
-* [**Getting Started with App Store Queries**](guides/getting-started.md)  
-  *Foundational concepts: Apple IDs, 2FA tokens, licensing, and command structure.*
-* [**Finding Build Identifiers (IPA File Zone & Metadata)**](guides/finding-build-identifiers.md)  
-  *How to find exact `externalVersionIdentifier` values on [IPA File Zone](https://ipafilezone.st/) without brute forcing.*
-* [**Installing Downloaded IPAs via AppManager & CLI**](guides/installing-downloaded-ipas.md)  
-  *Deploying packages to iOS devices with [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager), Apple Configurator, or `ideviceinstaller`.*
+  *The complete step-by-step walkthrough: login, licensing, version selection, download, and USB deployment.*
+* [**Finding Build Identifiers (IPA File Zone Guide)**](guides/finding-build-identifiers.md)  
+  *How to quickly locate exact App Store version IDs (`externalVersionIdentifier`) on [IPA File Zone](https://ipafilezone.st/).*
+* [**Installing Downloaded IPAs on iOS (AppManager & CLI)**](guides/installing-downloaded-ipas.md)  
+  *Deploying packages to iOS hardware over USB via [AppManager](https://git.kawaiizenbo.me/kawaiizenbo/AppManager) without jailbreak or 7-day expiration.*
 
-### 💻 Platform Setup Guides
-* [**🪟 Windows Setup Guide**](guides/windows-setup.md) — *PowerShell 5.1/7, Apple USB drivers, and AppManager setup.*
+### 💻 Quick OS Setup Guides
+* [**🪟 Windows Setup Guide**](guides/windows-setup.md) — *PowerShell setup, Apple USB drivers, and AppManager installation.*
 * [**🍎 macOS Setup Guide**](guides/macos-setup.md) — *Homebrew installation, native Keychain integration, and Apple Configurator.*
-* [**🐧 Linux Setup Guide**](guides/linux-setup.md) — *Precompiled binaries, `usbmuxd`, and `libimobiledevice` driver configuration.*
+* [**🐧 Linux Setup Guide**](guides/linux-setup.md) — *Precompiled binaries, `usbmuxd`, and `libimobiledevice` configuration.*
 
-### 🚨 Troubleshooting & Community Issues
+### 🚨 Troubleshooting & Reference
 * [**ipatool Common Errors & Solutions**](troubleshooting/ipatool-errors.md)  
-  *Solutions for Windows keystore prompts, `license is required` errors, Unicode flag syntax errors, FairPlay launch crashes, and tvOS retrieval.*
-
-### 🛠️ Tools & Ecosystem
-* [**Recommended Tools & Matrix**](tools/useful-tools.md)  
-  *Curated collection of active tools: `ipatool`, `AppManager`, `libimobiledevice`, `mitmproxy`, and version databases.*
-
-### 🔬 Research Notes
-* [**App Store External Version Identifiers**](research/external-identifiers.md)  
-  *Technical deep-dive on how Apple server-side ingestion assigns 64-bit monotonic identifiers.*
+  *Direct solutions for keystore prompts, `license is required`, Unicode dashes, launch crashes, and tvOS.*
+* [**Recommended Tools & Resources**](tools/useful-tools.md)  
+  *Curated collection of official repos, GUI frontends, and version databases.*
 
 ---
 

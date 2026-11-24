@@ -29,6 +29,25 @@ This guide provides a comprehensive, beginner-friendly walkthrough on how to dis
 
 ---
 
+## How It Works Behind the Scenes
+
+```mermaid
+sequenceDiagram
+    participant User as You (Terminal)
+    participant Store as Apple App Store API
+    participant CDN as Apple Content Delivery Network
+    
+    User->>Store: 1. Login (Apple ID + 2FA)
+    Store-->>User: Authenticated Session
+    User->>Store: 2. Purchase (Claim Free License)
+    Store-->>User: License Registered to Account
+    User->>Store: 3. Request External Version ID
+    Store-->>CDN: Authorize Signed Package Stream
+    CDN-->>User: Download .ipa Package
+```
+
+---
+
 ## Step 1: Authenticate with the App Store
 
 Open your terminal or Windows PowerShell, navigate to the folder where you placed `ipatool`, and log in:

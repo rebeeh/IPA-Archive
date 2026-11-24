@@ -47,4 +47,4 @@ A curated matrix of active open-source tools, repositories, and databases for iO
 
 ---
 
-[⬅️ Troubleshooting](../troubleshooting/ipatool-errors.md) • [External Version Research ➡️](../research/external-identifiers.md)
+[⬅️ Troubleshooting](../troubleshooting/ipatool-errors.md) • [Finding Build Identifiers ➡️](../guides/finding-build-identifiers.md)

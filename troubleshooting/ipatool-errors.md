@@ -12,13 +12,15 @@ This document provides solutions for the most frequent issues, error strings, an
 
 ## Table of Contents
 
-1. [Windows Keystore Passphrase Confusion](#1-windows-keystore-passphrase-confusion)
-2. ["license is required" Error](#2-license-is-required-error)
-3. [Typographic / Unicode Dash Parsing Error](#3-typographic--unicode-dash-parsing-error)
-4. [Email Address Format Confusion](#4-email-address-format-confusion)
-5. [App Installs via USB but Closes Immediately on Launch](#5-app-installs-via-usb-but-closes-immediately-on-launch)
-6. ["failed to write file: unexpected EOF" / Corrupted Downloads](#6-failed-to-write-file-unexpected-eof--corrupted-downloads)
-7. [tvOS & watchOS Apps Downloading](#7-tvos--watchos-apps-downloading)
+| Quick Jump Link | Common Symptom | Root Cause |
+| :--- | :--- | :--- |
+| [**1. Windows Keystore Passphrase**](#1-windows-keystore-passphrase-confusion) | `enter passphrase to unlock ".ipatool"` | Local DPAPI encryption prompt |
+| [**2. License is Required**](#2-license-is-required-error) | `ERR error="license is required"` | App not yet claimed on Apple account |
+| [**3. Unicode Dash Error**](#3-typographic--unicode-dash-parsing-error) | `unknown shorthand flag: 'â' in -—email` | Formatted em-dash copied from web |
+| [**4. Email Address Format**](#4-email-address-format-confusion) | Asking if `@icloud.com` is required | Misunderstanding of Apple ID formats |
+| [**5. App Closes on Launch**](#5-app-installs-via-usb-but-closes-immediately-on-launch) | App flashes and closes immediately | Apple FairPlay DRM account mismatch |
+| [**6. Unexpected EOF / Bad Zip**](#6-failed-to-write-file-unexpected-eof--corrupted-downloads) | `failed to write file: unexpected EOF` | Interrupted download or low disk space |
+| [**7. tvOS & watchOS Apps**](#7-tvos--watchos-apps-downloading) | How to download for Apple TV or Watch | Missing platform flags or universal purchase |
 
 ---
 

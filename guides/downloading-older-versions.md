@@ -102,6 +102,8 @@ If you haven't previously installed or "purchased" this app with this Apple ID, 
 
 > [!IMPORTANT]
 > The `purchase` command only works for **free applications** ($0.00). If the app is paid, you must purchase it legitimately in the App Store on an iOS device first. `ipatool` cannot bypass billing.
+> 
+> *Hitting `ERR error="license is required"`? See [Troubleshooting: License is Required](../troubleshooting/ipatool-errors.md#2-license-is-required-error).*
 
 ---
 
@@ -177,6 +179,9 @@ INF output="com.toyopagroup.picaboo_447188370_13.90.0.ipa" purchased=false succe
 
 The decrypted package is now saved in your active working directory.
 
+> [!TIP]
+> *Encountering `unexpected EOF` or `failed to open zip reader` during download? See [Troubleshooting: Incomplete Downloads](../troubleshooting/ipatool-errors.md#6-failed-to-write-file-unexpected-eof--corrupted-downloads).*
+
 ---
 
 ## Step 6: Deploy to Your iOS Device
@@ -190,6 +195,8 @@ Because the downloaded package is signed with Apple's FairPlay DRM for your Appl
 
 > [!IMPORTANT]
 > The target iOS device **must be signed into the same Apple ID** used with `ipatool` (under **Settings > App Store**). If there is an account mismatch, the app will instantly close on launch.
+> 
+> *App crashes or closes immediately on launch? See [Troubleshooting: FairPlay DRM Mismatch](../troubleshooting/ipatool-errors.md#5-app-installs-via-usb-but-closes-immediately-on-launch).*
 
 For comprehensive installation instructions, read [Installing Downloaded IPAs](installing-downloaded-ipas.md).
 

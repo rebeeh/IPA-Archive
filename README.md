@@ -20,6 +20,15 @@
 
 ---
 
+## Downloading Older Versions of iOS Apps Using ipatool
+
+For users arriving from community guides (such as [qnblackcat's gist](https://gist.github.com/qnblackcat/4f7b77f685ccda2ff4ef916a27d66107)), this repository provides updated documentation, answers to common errors, and modern GUI deployment workflows.
+
+- **Primary Walkthrough**: [Downloading Older Versions of iOS Apps Using ipatool](guides/downloading-older-versions.md)
+- **Troubleshooting & Fixes**: [ipatool Common Errors & Solutions](troubleshooting/ipatool-errors.md) (Addresses Windows passphrase prompts, `license is required` errors, Unicode flag syntax errors, and FairPlay DRM launch issues).
+
+---
+
 ## Workflow at a Glance
 
 ```text
@@ -72,10 +81,13 @@ Deploy the downloaded `.ipa` package using [AppManager](https://git.kawaiizenbo.
 ## Documentation Structure
 
 - [Guides](guides/)
+  - [Downloading Older Versions of iOS Apps Using ipatool](guides/downloading-older-versions.md)
   - [Getting Started](guides/getting-started.md)
   - [Finding Build Identifiers (IPA File Zone)](guides/finding-build-identifiers.md)
   - [Windows Setup](guides/windows-setup.md)
   - [Device Installation via AppManager & CLI](guides/installing-downloaded-ipas.md)
+- [Troubleshooting & Community Issues](troubleshooting/)
+  - [ipatool Common Errors & Solutions](troubleshooting/ipatool-errors.md)
 - [Tools & Ecosystem](tools/)
   - [Recommended Tools](tools/useful-tools.md)
 - [Automation & Scripts](scripts/)

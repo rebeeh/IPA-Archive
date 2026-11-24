@@ -1,6 +1,6 @@
 # Finding Build Identifiers with IPA File Zone & Metadata
 
-[🏠 Home](../README.md) • [📚 Guides Index](../README.md#-documentation-index) • [📥 Download Older Versions](downloading-older-versions.md) • [🐍 Verification Script](../scripts/find_version_id.py)
+[🏠 Home](../README.md) • [📚 Guides Index](../README.md#-documentation-index) • [📥 Download Older Versions](downloading-older-versions.md) • [📲 Installation Guide](installing-downloaded-ipas.md)
 
 ---
 
@@ -85,26 +85,6 @@ Response:
 
 > [!TIP]
 > Notice the `"displayVersion"` field: `13.90.0`. This confirms with 100% certainty that downloading ID `885041606` will yield the exact release required.
-
----
-
-## Method 3: Automated Verification via Python
-
-We provide a standalone helper script, [`scripts/find_version_id.py`](../scripts/find_version_id.py), to automate verification:
-
-```bash
-# Verify a single candidate ID
-python3 scripts/find_version_id.py -b com.toyopagroup.picaboo --id 885041606
-```
-
-Output:
-```text
-[*] Querying metadata for bundle: com.toyopagroup.picaboo, version ID: 885041606...
-[+] Found Match:
-    Display Version: 13.90.0
-    External ID:     885041606
-    Release Date:    2026-04-28T19:28:24Z
-```
 
 ---
 

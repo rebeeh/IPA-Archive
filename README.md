@@ -90,11 +90,9 @@ ipatool.exe download -b com.toyopagroup.picaboo --external-version-id 885041606
 * [**ipatool Common Errors & Solutions**](troubleshooting/ipatool-errors.md)  
   *Solutions for Windows keystore prompts, `license is required` errors, Unicode flag syntax errors, FairPlay launch crashes, and tvOS retrieval.*
 
-### 🛠️ Tools & Scripts
+### 🛠️ Tools & Ecosystem
 * [**Recommended Tools & Matrix**](tools/useful-tools.md)  
   *Curated collection of active tools: `ipatool`, `AppManager`, `libimobiledevice`, `mitmproxy`, and version databases.*
-* [**Automation Script (`find_version_id.py`)**](scripts/find_version_id.py)  
-  *Python utility to verify external version IDs or automate version discovery.*
 
 ### 🔬 Research Notes
 * [**App Store External Version Identifiers**](research/external-identifiers.md)  

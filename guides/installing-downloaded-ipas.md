@@ -54,10 +54,13 @@ Because these packages are signed by Apple, they **do not require jailbreaking, 
 3. Monitor the live log in the bottom panel:
    ```text
    Connecting to device...
-   Attempting install of C:\...\com.toyopagroup.picaboo_447188370_13.90.0.ipa
+   Attempting install of C:\Users\Ebiza\Downloads\com.toyopagroup.picaboo_447188370_13.90.0.ipa
    Process ended with code 0 (Success)
    ```
 4. Once `Process ended with code 0 (Success)` is printed, the app icon appears immediately on your iOS Home Screen.
+
+![AppManager Successful Deployment](../docs/images/appmanager-install-success.png)
+*Figure: Successful package installation using AppManager over USB on Windows without jailbreak.*
 
 ---
 

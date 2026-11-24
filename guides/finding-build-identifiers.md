@@ -46,7 +46,8 @@ Querying every single integer using `ipatool get-version-metadata` takes hundred
 ### 2. Inspect the Version History Table
 Scroll down to the **Version History** section. The table displays entries structured as follows:
 
-![IPA File Zone Version Table](../docs/images/ipafilezone-table.png)
+![IPA File Zone Version Table](../docs/images/ipafilezone-version-id-sample.png)
+*Figure: Live table structure on IPA File Zone showing Version / IDs with App Store ID (externalVersionIdentifier).*
 
 | Details | Version / IDs | Version Date | Action |
 | :--- | :--- | :--- | :--- |
